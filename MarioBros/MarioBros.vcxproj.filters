@@ -148,18 +148,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="brick.txt" />
-    <Text Include="cloud.txt" />
-    <Text Include="coin.txt" />
-    <Text Include="goomba.txt" />
-    <Text Include="mario.txt" />
-    <Text Include="mario-sample.txt" />
-    <Text Include="scene01.txt" />
-    <Text Include="scene02.txt" />
-    <Text Include="scene0005.txt" />
-    <Text Include="scene0006.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="mario.ico">
       <Filter>Resource Files</Filter>
     </Image>

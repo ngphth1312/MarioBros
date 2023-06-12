@@ -1,5 +1,5 @@
 [SETTINGS]
-start	6
+start	7
 width	320
 height	240
 
@@ -11,6 +11,7 @@ height	240
 2	scene02.txt
 5	scene0005.txt
 6	scene0006.txt
+7	mainScene01.txt
 
 # id	file 
 [TEXTURES]
@@ -18,3 +19,4 @@ height	240
 0	textures\mario.png
 10	textures\enemies.png
 20	textures\misc.png
+30	textures\SuperMarioBros3_Stage1_1.png

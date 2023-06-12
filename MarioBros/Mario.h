@@ -6,6 +6,7 @@
 
 #include "debug.h"
 
+//SPEED
 #define MARIO_WALKING_SPEED		0.1f
 #define MARIO_RUNNING_SPEED		0.2f
 
@@ -19,6 +20,7 @@
 
 #define MARIO_JUMP_DEFLECT_SPEED  0.4f
 
+//SPRITES_ID
 #define MARIO_STATE_DIE				-10
 #define MARIO_STATE_IDLE			0
 #define MARIO_STATE_WALKING_RIGHT	100

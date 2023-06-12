@@ -1,0 +1,8 @@
+# id	left	top	right	bottom	texture_id
+[SPRITES]
+
+#GROUND
+50010	0	416	15	431	30
+50020	16	416	31	431	30
+50030	608	416	623	431	30
+
