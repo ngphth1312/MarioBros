@@ -14,6 +14,8 @@
 #define TYPE_QUESTION_BRICK_COIN 1
 #define TYPE_QUESTION_BRICK_ITEM 2
 
+#define QUESTION_BRICK_STATE_UP 100
+
 #define ADJUST_UP_DOWN 13
 
 class CQuestionBrick : public CGameObject
@@ -41,7 +43,7 @@ protected:
 public:
 
 	CQuestionBrick(float x, float y, int type);
-
+	virtual void SetState(int state);
 	float GetMinY() { return minY; }
 
 	void SetIsUnbox(BOOLEAN boolean) { isUnbox = boolean; }

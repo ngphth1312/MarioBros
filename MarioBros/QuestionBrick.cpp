@@ -28,11 +28,44 @@ void CQuestionBrick::OnNoCollision(DWORD dt)
 
 void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+	//if (!checkObjectInCamera(this)) return;
+	if (x != startX) {
+		x = startX;
+	}
+	if (!isEmpty) {
+		if (y != startY) y = startY;
+		if (x != startX) x = startX;
+	}
+	if (isUnbox) {
+		vy = 0;
+		ay = 0;
+		vx = 0;
+		y = startY;
+		x = startX;
+	}
+	else {
+		vy += ay * dt;
+		if (y <= minY)
+		{
+			vy = QUESTION_BRICK_SPEED_DOWN;
+		}
+		if (y > startY + QUESTION_BRICK_BBOX_HEIGHT - ADJUST_UP_DOWN)
+		{
+			y = startY;
+			vy = 0;
+			isEmpty = true;
+			isUnbox = true;
+		}
+	}
+	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
 
+
 void CQuestionBrick::Render()
 {
+	/*if (!checkObjectInCamera(this)) return;*/
+
 	int aniId;
 
 	if (isEmpty) 
@@ -41,6 +74,16 @@ void CQuestionBrick::Render()
 		aniId = ID_ANI_QUESTION_BRICK;
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
-	//RenderBoundingBox()
+	//RenderBoundingBox();
 }
 
+void CQuestionBrick::SetState(int state)
+{
+	CGameObject::SetState(state);
+	switch (state)
+	{
+	case QUESTION_BRICK_STATE_UP:
+		vy = -QUESTION_BRICK_SPEED_UP;
+		break;
+	}
+}

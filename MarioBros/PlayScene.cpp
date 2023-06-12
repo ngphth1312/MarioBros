@@ -9,6 +9,7 @@
 #include "Portal.h"
 #include "Coin.h"
 #include "Platform.h"
+#include "QuestionBrick.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -119,10 +120,8 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 	case OBJECT_TYPE_GOOMBA: obj = new CGoomba(x,y); break;
 	case OBJECT_TYPE_BRICK: obj = new CBrick(x,y); break;
 	case OBJECT_TYPE_COIN: obj = new CCoin(x, y); break;
-
 	case OBJECT_TYPE_PLATFORM:
 	{
-
 		float cell_width = (float)atof(tokens[3].c_str());
 		float cell_height = (float)atof(tokens[4].c_str());
 		int length = atoi(tokens[5].c_str());
@@ -135,9 +134,10 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 			cell_width, cell_height, length,
 			sprite_begin, sprite_middle, sprite_end
 		);
-
 		break;
 	}
+	case OBJECT_TYPE_QUESTION_BRICK_COIN: obj = new CQuestionBrick(x, y, TYPE_QUESTION_BRICK_COIN); break;
+	case OBJECT_TYPE_QUESTION_BRICK_ITEM: obj = new CQuestionBrick(x, y, TYPE_QUESTION_BRICK_ITEM);	break;
 
 	case OBJECT_TYPE_PORTAL:
 	{

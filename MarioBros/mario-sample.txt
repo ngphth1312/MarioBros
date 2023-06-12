@@ -19,4 +19,6 @@ height	240
 0	textures\mario.png
 10	textures\enemies.png
 20	textures\misc.png
-30	textures\SuperMarioBros3_Stage1_1.png
+30	textures\platform.png
+40	textures\misc_left.png
+50	textures\misc_right.png
