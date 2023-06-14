@@ -10,6 +10,7 @@
 #include "Coin.h"
 #include "Platform.h"
 #include "QuestionBrick.h"
+#include "Pipe.h"
 
 #include "SampleKeyEventHandler.h"
 
@@ -128,17 +129,32 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 		int sprite_begin = atoi(tokens[6].c_str());
 		int sprite_middle = atoi(tokens[7].c_str());
 		int sprite_end = atoi(tokens[8].c_str());
+		int isColidable = atoi(tokens[9].c_str());
 
 		obj = new CPlatform(
 			x, y,
 			cell_width, cell_height, length,
-			sprite_begin, sprite_middle, sprite_end
+			sprite_begin, sprite_middle, sprite_end, isColidable
 		);
 		break;
 	}
 	case OBJECT_TYPE_QUESTION_BRICK_COIN: obj = new CQuestionBrick(x, y, TYPE_QUESTION_BRICK_COIN); break;
 	case OBJECT_TYPE_QUESTION_BRICK_ITEM: obj = new CQuestionBrick(x, y, TYPE_QUESTION_BRICK_ITEM);	break;
+	case OBJECT_TYPE_PIPE: 
+	{
+		int body_length = atoi(tokens[3].c_str());
+		int sprite_id_topLeft = atoi(tokens[4].c_str());
+		int sprite_id_topRight = atoi(tokens[5].c_str());
+		int sprite_id_bodyLeft = atoi(tokens[6].c_str());
+		int sprite_id_bodyRight = atoi(tokens[7].c_str());
 
+		obj = new CPipe(
+			x, y, 
+			body_length, sprite_id_topLeft, sprite_id_topRight,
+			sprite_id_bodyLeft, sprite_id_bodyRight
+		);
+		break;
+	}
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = (float)atof(tokens[3].c_str());
