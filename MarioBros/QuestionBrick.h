@@ -32,18 +32,11 @@ protected:
 	BOOLEAN isUnbox = false;
 	BOOLEAN isEmpty = false;
 
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
-	virtual void Render();
-
-	virtual int IsCollidable() { return 1; }//!isUnbox || !isEmpty; }
-	virtual int IsBlocking() { return 1; }
-	virtual void OnNoCollision(DWORD dt);
 
 public:
 
 	CQuestionBrick(float x, float y, int type);
-	virtual void SetState(int state);
+	void SetState(int state);
 	float GetMinY() { return minY; }
 
 	void SetIsUnbox(BOOLEAN boolean) { isUnbox = boolean; }
@@ -53,6 +46,14 @@ public:
 
 	void SetType(int type) { this->type = type; }
 	int GetType() { return type; }
+
+	void GetBoundingBox(float& left, float& top, float& right, float& bottom);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+	void Render();
+
+	int IsCollidable() { return 0; }
+	int IsBlocking() { return 1; }
+	void OnNoCollision(DWORD dt);
 
 	CGameObject* item = NULL;
 };
