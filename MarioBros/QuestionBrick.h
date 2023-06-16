@@ -51,8 +51,8 @@ public:
 	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	void Render();
 
-	int IsCollidable() { return 0; }
-	int IsBlocking() { return 1; }
+	//int IsCollidable() { return 0; }
+	//int IsBlocking() { return 1; }
 	void OnNoCollision(DWORD dt);
 
 	CGameObject* item = NULL;

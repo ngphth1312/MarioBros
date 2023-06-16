@@ -10,6 +10,7 @@
 #include "QuestionBrick.h"
 
 #include "Collision.h"
+#include "Platform.h"
 
 void CMario::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -36,14 +37,14 @@ void CMario::OnNoCollision(DWORD dt)
 	y += vy * dt;
 }
 
-void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
+void CMario::OnCollisionWith(LPCOLLISIONEVENT e)  
 {
 	if (e->ny != 0 && e->obj->IsBlocking())
 	{
 		vy = 0;
 		if (e->ny < 0) isOnPlatform = true;
 	}
-/*	else*/ //Probably no need for else
+
 	if (e->nx != 0 && e->obj->IsBlocking())
 	{
 		vx = 0;
@@ -63,7 +64,20 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		OnCollisionWithPortal(e);
 	else if (dynamic_cast<CQuestionBrick*>(e->obj))
 		OnCollisionWithQuestionBrick(e);
+	//else if (dynamic_cast<CPlatform*>(e->obj))
+	//	OnCollisionWithPLatform(e);
 }
+
+//void CMario::OnCollisionWithPLatform(LPCOLLISIONEVENT e)
+//{
+//	CPlatform* platform = dynamic_cast<CPlatform*>(e->obj);
+//
+//	if (e->ny < 0 && platform->GetIsBlocking())
+//	{
+//		vy = 0;
+//		isOnPlatform = true;
+//	}
+//}
 
 void CMario::OnCollisionWithQuestionBrick(LPCOLLISIONEVENT e)
 {
