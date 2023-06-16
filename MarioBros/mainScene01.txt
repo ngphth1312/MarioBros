@@ -18,8 +18,6 @@ questionBrick.txt
 #Brick
 
 
-
-
 #Platform
 
 
@@ -142,6 +140,9 @@ questionBrick.txt
 #PIPE
 8	352	144	2	56011	56012	56021	56022
 
+
+#Gommba
+2	240	158	1
 
 #NEED TO BE RENDER FIRST
 
