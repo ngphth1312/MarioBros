@@ -9,7 +9,6 @@ CQuestionBrick::CQuestionBrick(float x, float y, int type) :CGameObject(x, y)
 	this->startY = y;
 	this->type = type;
 	this->ay = 0;
-	this->minY = y - QUESTION_BRICK_BBOX_HEIGHT + ADJUST_UP_DOWN;
 }
 
 void CQuestionBrick::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -28,35 +27,8 @@ void CQuestionBrick::OnNoCollision(DWORD dt)
 
 void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-	//if (!checkObjectInCamera(this)) return;
-	if (x != startX) {
-		x = startX;
-	}
-	if (!isEmpty) {
-		if (y != startY) y = startY;
-		if (x != startX) x = startX;
-	}
-	if (isUnbox) {
-		vy = 0;
-		ay = 0;
-		vx = 0;
-		y = startY;
-		x = startX;
-	}
-	else {
-		vy += ay * dt;
-		if (y <= minY)
-		{
-			vy = QUESTION_BRICK_SPEED_DOWN;
-		}
-		if (y > startY + QUESTION_BRICK_BBOX_HEIGHT - ADJUST_UP_DOWN)
-		{
-			y = startY;
-			vy = 0;
-			isEmpty = true;
-			isUnbox = true;
-		}
-	}
+	//checkIsInCamera();
+	
 	CGameObject::Update(dt, coObjects);
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
@@ -64,14 +36,9 @@ void CQuestionBrick::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 void CQuestionBrick::Render()
 {
-	/*if (!checkObjectInCamera(this)) return;*/
+	//checkIsInCamera();
 
-	int aniId;
-
-	if (isEmpty) 
-		aniId = ID_ANI_QUESTION_BRICK_EMPTY;
-	else 
-		aniId = ID_ANI_QUESTION_BRICK;
+	int aniId = ID_ANI_QUESTION_BRICK;
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
 	//RenderBoundingBox();

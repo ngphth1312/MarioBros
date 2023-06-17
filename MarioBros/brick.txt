@@ -1,10 +1,8 @@
 # id	left	top	right	bottom	texture_id
 [SPRITES]
-#OUTER BRICK
-20011	0	416	15	431	30
 
-#INNER BRICK
-20001	16	416	31	431	30
+#UNBREAKABLE BRICK
+20100	32	64	47	79	30
 
 # ani_id	sprite1_id	time1	sprite2_id	time2	...
 [ANIMATIONS]

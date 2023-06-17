@@ -27,22 +27,16 @@ protected:
 	int type;//use later to specify item type or coin type
 
 	float ay;
-	float minY;
 
-	BOOLEAN isUnbox = false;
-	BOOLEAN isEmpty = false;
-
+	BOOLEAN isUnboxed = false;
 
 public:
 
 	CQuestionBrick(float x, float y, int type);
 	void SetState(int state);
-	float GetMinY() { return minY; }
 
-	void SetIsUnbox(BOOLEAN boolean) { isUnbox = boolean; }
-	void SetIsEmpty(BOOLEAN boolean){ isEmpty = boolean; }
-	BOOLEAN GetIsUnbox() { return isUnbox; }
-	BOOLEAN GetIsEmpty() { return isEmpty; }
+	void SetIsUnbox(BOOLEAN boolean) { isUnboxed = boolean; }
+	BOOLEAN GetIsUnbox() { return isUnboxed; }
 
 	void SetType(int type) { this->type = type; }
 	int GetType() { return type; }

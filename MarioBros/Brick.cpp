@@ -2,9 +2,12 @@
 
 void CBrick::Render()
 {
-	CAnimations* animations = CAnimations::GetInstance();
-	animations->Get(ID_ANI_BRICK)->Render(x, y);
-	//RenderBoundingBox();
+	//NEED A WAY TO AVOID TYPING INVALID TYPE OF BRICK
+	CSprites* s = CSprites::GetInstance();
+	if (type == 1)
+		s->Get(ID_SPRITE_BRICK_UNBREAKABLE)->Draw(x, y);
+
+	RenderBoundingBox();
 }
 
 void CBrick::GetBoundingBox(float &l, float &t, float &r, float &b)
